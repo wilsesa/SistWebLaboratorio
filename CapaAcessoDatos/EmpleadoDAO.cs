@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using CapaEntidades;
+using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CapaEntidades;
 
 namespace CapaAcessoDatos
 {
-    class EmpleadoDAO
+    public class EmpleadoDAO
     {
         #region "PATRON SINGLETON"
         private static EmpleadoDAO daoEmpleado = null;
@@ -19,7 +15,7 @@ namespace CapaAcessoDatos
 
         public static EmpleadoDAO getInstance()
         {
-            if(daoEmpleado == null)
+            if (daoEmpleado == null)
             {
                 daoEmpleado = new EmpleadoDAO();
             }
@@ -37,7 +33,7 @@ namespace CapaAcessoDatos
             try
             {
                 conexion = Conexion.getInstance().ConexionBD();
-                cmd = new SqlCommand("spInsAccesoSistema", conexion);
+                cmd = new SqlCommand("spAccesoSistema", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@prmUser", user);
                 cmd.Parameters.AddWithValue("@prmPass", pass);

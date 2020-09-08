@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿using CapaEntidades;
+using CapaLogicaNegocio;
+using System;
+
 
 namespace CapaPresentacion
 {
@@ -35,7 +33,19 @@ namespace CapaPresentacion
             //    txtPasswword.Text = "";
             //}
 
+            Empleado objEmpleado = EmpleadoLN.getInstance().AccesoSistema(txtUsuario.Text, txtPasswword.Text);
 
+            if (objEmpleado != null)
+            {
+                Response.Write("<script>alert('USUARIO CORRECTO!...')</script>");
+                Response.Redirect("PanelGeneral.aspx");
+            }
+            else
+            {
+                Response.Write("<script>alert('USUARIO INCORRECTO!!!')</script>");
+                txtUsuario.Text = "";
+                txtPasswword.Text = "";
+            }
         }
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.SqlClient;
 
 namespace CapaAcessoDatos
 {
@@ -18,7 +13,7 @@ namespace CapaAcessoDatos
 
         public static Conexion getInstance()
         {
-            if(conexion == null)
+            if (conexion == null)
             {
                 conexion = new Conexion();
             }
