@@ -33,7 +33,7 @@ namespace CapaAcessoDatos
             try
             {
                 conexion = Conexion.getInstance().ConexionBD();
-                cmd = new SqlCommand("spAccesoSistema", conexion);
+                cmd = new SqlCommand("spSelAcessoSistema", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@prmUser", user);
                 cmd.Parameters.AddWithValue("@prmPass", pass);

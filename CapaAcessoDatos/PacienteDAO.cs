@@ -33,7 +33,8 @@ namespace CapaAcessoDatos
             try
             {
                 con = Conexion.getInstance().ConexionBD();
-                cmd = new SqlCommand("spRegistrarPaciente", con);
+
+                cmd = new SqlCommand("spInsRegistrarPaciente", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@prmNombres", objPaciente.Nombres);
                 cmd.Parameters.AddWithValue("@prmApPaterno", objPaciente.ApPaterno);
