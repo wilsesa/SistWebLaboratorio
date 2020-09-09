@@ -37,20 +37,17 @@ namespace CapaPresentacion
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            //Registro del paciente
+            Paciente objPaciente = GetEntity();
+            //Enviar a la capa de Logica de Negocio
+            bool response = PacienteLN.getInstance().RegistrarPaciente(objPaciente);
+            if (response == true)
             {
-                //Registro del paciente
-                Paciente objPaciente = GetEntity();
-                //Enviar a la capa de Logica de Negocio
-                bool response = PacienteLN.getInstance().RegistrarPaciente(objPaciente);
-                if (response == true)
-                {
-                    Response.Write("<script>alert('REGISTRO CORRECTO')</script>");
-                }
-                else
-                {
-                    Response.Write("<script>alert('REGISTRO INCORRECTO')</script>");
-                }
+                Response.Write("<script>alert('REGISTRO CORRECTO')</script>");
+            }
+            else
+            {
+                Response.Write("<script>alert('REGISTRO INCORRECTO')</script>");
             }
         }
     }
