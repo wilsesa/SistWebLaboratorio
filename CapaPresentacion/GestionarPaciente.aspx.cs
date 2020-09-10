@@ -1,7 +1,10 @@
 ﻿using CapaEntidades;
 using CapaLogicaNegocio;
 using System;
+using System.Collections.Generic;
 using System.Web;
+using System.Web.Services;
+using System.Web.Script.Serialization;
 using System.Web.UI;
 
 namespace CapaPresentacion
@@ -14,6 +17,22 @@ namespace CapaPresentacion
             {
 
             }
+        }
+
+        [WebMethod]
+        public static List<Paciente> ListarPacientes()
+        {
+            List<Paciente> Lista = null;
+            try
+            {
+                Lista = PacienteLN.getInstance().ListarPaciente();
+            }
+            catch (Exception ex)
+            {
+                Lista = null;
+                //throw ex;
+            }
+            return Lista;
         }
 
         private Paciente GetEntity()

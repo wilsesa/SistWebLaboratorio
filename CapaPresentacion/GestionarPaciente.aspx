@@ -46,7 +46,7 @@
                         </div>
                         <div class="form-group">
                             <asp:DropDownList ID="ddlSexo" runat="server" CssClass="form-control">
-                                 <asp:ListItem Text="Masculino" />
+                                <asp:ListItem Text="Masculino" />
                                 <asp:ListItem Text="Femenino" />
                             </asp:DropDownList>
                         </div>
@@ -72,7 +72,7 @@
                 </div>
             </div>
         </div>
-        <%--<div class="row">--%>
+
         <div align="center">
             <%--<div style="text-align:center">--%>
             <table>
@@ -88,6 +88,34 @@
                 </tr>
             </table>
         </div>
-        <%--</div>--%>
+        <br />
+        <%--DataTable Part--%>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <h3 class="box-title">Lista de Pacientes</h3>
+                    </div>
+                    <div class="box-body table-responsive">
+                        <table id="tbl_pacientes" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Nombres</th>
+                                    <th>Apellidos</th>
+                                    <th>Sexo</th>
+                                    <th>Edad</th>
+                                    <th>Dirección</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbl_body-table">
+                                <%--DATA POR MEDIO DE AJAX--%>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 </asp:Content>

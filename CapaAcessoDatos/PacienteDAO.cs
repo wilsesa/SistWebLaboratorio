@@ -1,5 +1,6 @@
 ﻿using CapaEntidades;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -61,6 +62,66 @@ namespace CapaAcessoDatos
                 con.Close();
             }
             return response;
+        }
+
+        public List<Paciente> ListarPaciente()
+        {
+            List<Paciente> Lista = new List<Paciente>();
+            SqlConnection con = null;
+            SqlCommand cmd = null;
+            SqlDataReader dr = null;
+
+            try
+            {
+                con = Conexion.getInstance().ConexionBD();
+                cmd = new SqlCommand("spSelListarPacientes", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    //Crear objetos de tipo Paciente
+                    Paciente objPaciente = new Paciente();
+                    objPaciente.IdPaciente = Convert.ToInt32(dr["idPaciente"].ToString());
+                    objPaciente.Nombres = dr["Nombres"].ToString();
+                    objPaciente.ApPaterno = dr["apPaterno"].ToString();
+                    objPaciente.ApMaterno = dr["apMaterno"].ToString();
+                    objPaciente.Edad = Convert.ToInt32(dr["edad"].ToString());
+                    objPaciente.Sexo = Convert.ToChar(dr["sexo"].ToString());
+                    objPaciente.NroDocumento = dr["nroDocumento"].ToString();
+                    objPaciente.Direccion = dr["direccion"].ToString();
+                    objPaciente.Estado = true;
+                    //Anadir a la lista de objetos
+                    Lista.Add(objPaciente);
+                }
+
+                //EL OTRO METODO ES USANDO USING
+                //using(SqlDataReader dr1 = cmd.ExecuteReader())
+                //{
+                //    Paciente objPaciente = new Paciente();
+                //    objPaciente.IdPaciente = Convert.ToInt32(dr["idPaciente"].ToString());
+                //    objPaciente.Nombres = dr["Nombres"].ToString();
+                //    objPaciente.ApPaterno = dr["apPaterno"].ToString();
+                //    objPaciente.ApMaterno = dr["apMaterno"].ToString();
+                //    objPaciente.Edad = Convert.ToInt32(dr["edad"].ToString());
+                //    objPaciente.Sexo = Convert.ToChar(dr["sexo"].ToString());
+                //    objPaciente.NroDocumento = dr["nroDocumento"].ToString();
+                //    objPaciente.Direccion = dr["direccion"].ToString();
+                //    objPaciente.Estado = true;
+                //}
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return Lista;
         }
     }
 }
