@@ -47,8 +47,13 @@ namespace CapaAcessoDatos
                     objEmpleado.ID = Convert.ToInt32(dr["idEmpleado"].ToString());
                     objEmpleado.Usuario = dr["usuario"].ToString();
                     objEmpleado.Clave = dr["clave"].ToString();
+                    //objEmpleado.Nombre = dr["nombres"].ToString();
+                    //objEmpleado.ApPaterno = dr["apPaterno"].ToString();
+                    //objEmpleado.ApMaterno = dr["apMaterno"].ToString();
+                    //objEmpleado.NroDocumento = dr["nroDocumento"].ToString();
+                    objEmpleado.Estado = true;
                 }
-            }
+            } 
             catch (Exception ex)
             {
                 objEmpleado = null;

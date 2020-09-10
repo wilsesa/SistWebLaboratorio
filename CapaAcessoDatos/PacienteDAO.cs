@@ -64,7 +64,7 @@ namespace CapaAcessoDatos
             return response;
         }
 
-        public List<Paciente> ListarPaciente()
+        public List<Paciente> ListarPacientes()
         {
             List<Paciente> Lista = new List<Paciente>();
             SqlConnection con = null;
@@ -78,12 +78,12 @@ namespace CapaAcessoDatos
                 cmd.CommandType = CommandType.StoredProcedure;
                 dr = cmd.ExecuteReader();
 
-                while (dr.Read())
+                while(dr.Read())
                 {
                     //Crear objetos de tipo Paciente
                     Paciente objPaciente = new Paciente();
                     objPaciente.IdPaciente = Convert.ToInt32(dr["idPaciente"].ToString());
-                    objPaciente.Nombres = dr["Nombres"].ToString();
+                    objPaciente.Nombres = dr["nombres"].ToString();
                     objPaciente.ApPaterno = dr["apPaterno"].ToString();
                     objPaciente.ApMaterno = dr["apMaterno"].ToString();
                     objPaciente.Edad = Convert.ToInt32(dr["edad"].ToString());
@@ -100,7 +100,7 @@ namespace CapaAcessoDatos
                 //{
                 //    Paciente objPaciente = new Paciente();
                 //    objPaciente.IdPaciente = Convert.ToInt32(dr["idPaciente"].ToString());
-                //    objPaciente.Nombres = dr["Nombres"].ToString();
+                //    objPaciente.Nombres = dr["nombres"].ToString();
                 //    objPaciente.ApPaterno = dr["apPaterno"].ToString();
                 //    objPaciente.ApMaterno = dr["apMaterno"].ToString();
                 //    objPaciente.Edad = Convert.ToInt32(dr["edad"].ToString());

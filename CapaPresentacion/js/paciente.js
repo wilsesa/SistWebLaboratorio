@@ -10,12 +10,14 @@
 //    return template;
 //}
 
-//function addRow() {
+//function addRowToDataTable() {
 //    var template = templateRow();
 //    for (var i = 0; i < 10; i++) {
 //        $("#tbl_body-table").append(template);
 //    }
 //}
+
+//addRowToDataTable();
 
 
 

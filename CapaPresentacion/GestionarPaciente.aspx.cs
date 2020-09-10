@@ -25,7 +25,7 @@ namespace CapaPresentacion
             List<Paciente> Lista = null;
             try
             {
-                Lista = PacienteLN.getInstance().ListarPaciente();
+                Lista = PacienteLN.getInstance().ListarPacientes();
             }
             catch (Exception ex)
             {

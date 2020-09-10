@@ -38,15 +38,14 @@ namespace CapaLogicaNegocio
             }
         }
 
-        public List<Paciente> ListarPaciente()
+        public List<Paciente> ListarPacientes()
         {
             try
             {
-                return PacienteDAO.getInstance().ListarPaciente();
+                return PacienteDAO.getInstance().ListarPacientes();
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
